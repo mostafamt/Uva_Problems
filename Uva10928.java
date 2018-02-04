@@ -2,7 +2,7 @@ import java.util.* ;
 import java.io.* ;
 
 /**
- *
+ * 10928 - My Dear Neighbours
  * @author mostafa
  */
 public class Uva10928 
