@@ -1,7 +1,7 @@
 import java.util.* ;
 import java.io.* ;
 /**
- *
+ * Uva 280 - Vertex
  * @author mostafa
  */
 public class Uva280 
