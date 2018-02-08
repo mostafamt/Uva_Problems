@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
-
+/**
+ * 12442 - Forwarding Emails
+ * @author mostafa
+ */
 using namespace std ;
 int dfs(int u);
 
