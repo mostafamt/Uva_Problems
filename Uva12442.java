@@ -3,6 +3,11 @@ import java.io.* ;
 /**
  * 12442 - Forwarding Emails
  * @author mostafa
+ *  Descroption : in this problem , it must have cycles so every vertex have one neighbour
+ *                if you are going to count every node , you getting TLE .
+ *                you might use a vector to store cycle vertex values 
+ *                so you don't need to calculate it again and again ..
+ *                if you use recursion DFS method , it helps you a lot .
  */
 public class Uva12442 
 {
