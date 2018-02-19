@@ -1,114 +1,75 @@
-
-import java.io.* ;
 import java.util.* ;
-
-public class Uva469 {
+import java.io.* ;
+/**
+ * 469 - Wetlands of Florida
+ * @author mostafa
+ */
+public class Uva469 
+{
+    static char [][] Grid ; 
+    static int N , M ;
+    static int [] dx = { 1,1,1,  0,0,  -1,-1,-1};        // Flood Fill
+    static int [] dy = { 1,0,-1, 1,-1, 1,0,-1};
+    static boolean [][] visited ;
     
-    static char [][] adjMat = new char[101][101] ;
-    static boolean [][] visited = new boolean[101][101];
-    
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter out = new PrintWriter(System.out);
-        
-        int n = Integer.parseInt(br.readLine());
-        for (int i = 0; i < n ; i++) {
-            if(  i==0)
-                br.readLine();
-            String s ;
-            int index = 1 ;
-            int a = 0 , b = 0 ;
-            while( (s = br.readLine()) != null && !s.isEmpty() )
-            {
-                if(s.charAt(0) == 'W' || s.charAt(0) == 'L')
-                {
-                    for (int j = 0; j < s.length() ; j++) {
-                        adjMat[index][j+1] = s.charAt(j);
-                    }
-                }
-                else
-                {
-                    StringTokenizer st = new StringTokenizer(s);
-                    a = Integer.parseInt(st.nextToken()) ;
-                    b = Integer.parseInt(st.nextToken()) ;
-                    out.println( dfs(a, b) );
-                    for (int j = 0; j < 101 ; j++) {
-                        for (int k = 0; k < 101 ; k++) {
-                            visited[j][k] = false ;
-                        }
-                    }
-                }
-                index ++ ;
-            }
-            
-            
-            
-            for (int j = 0; j < 101 ; j++) {
-                for (int k = 0; k < 101 ; k++) {
-                    adjMat[j][k] = 'L' ;
-                }
-                
-            }
-            if( i != n-1 )
-                out.println();
-        }
-        out.close();
-        br.close();
-    }
-    
-    public static int dfs(int a , int b)
+    static int dfs(int i , int j)
     {
+        visited[i][j] = true ;
         int sum = 1 ;
-        visited[a][b] = true ;
-        Deque<Point> stack = new LinkedList<>();
-        stack.push( new Point(a, b) );
-        while( !stack.isEmpty() )
-        {
-            Point p = getNeighbours( stack.peek() );
-            if( p == null )
-                stack.pop();
-            else
-            {
-                sum++ ;
-                stack.push( p );
-                visited[p.x][p.y] = true ;
-            }
+        for (int k = 0; k < 8 ; k++) {
+            if(isValid(i+dx[k], j+dy[k]))
+                sum += dfs(i+dx[k], j+dy[k]);
         }
         return sum ;
     }
     
-    public static Point getNeighbours( Point p )
+    static boolean isValid(int i , int j)
     {
-        int x = p.x ;
-        int y = p.y ;
-        if( adjMat[x][y+1] == 'W' && !visited[x][y+1] )
-            return new Point(x, y+1);
-        else if( adjMat[x][y-1] == 'W' && !visited[x][y-1] )
-            return new Point(x, y-1);
-        else if( adjMat[x+1][y] == 'W' && !visited[x+1][y] )
-            return new Point(x+1,y);
-        else if( adjMat[x-1][y] == 'W' && !visited[x-1][y] )
-            return new Point(x-1, y);
-        else if( adjMat[x+1][y+1] == 'W' && !visited[x+1][y+1] )
-            return new Point(x+1,y+1);
-        else if( adjMat[x-1][y-1] == 'W' && !visited[x-1][y-1] )
-            return new Point(x-1,y-1);
-        else if( adjMat[x+1][y-1] == 'W' && !visited[x+1][y-1] )
-            return new Point(x+1,y-1);
-        else if( adjMat[x-1][y+1] == 'W' && !visited[x-1][y+1] )
-            return new Point(x-1, y+1);
-        else
-            return null ;
+        if(i<0 || j < 0 || i >= N || j >= M || visited[i][j] || Grid[i][j] == 'L')
+            return false ;
+        return true ;
     }
-}
-
-class Point
-{
-    public int x , y ;
-    public Point(int x , int y)
+    
+    
+    
+    
+    public static void main(String[] args) throws IOException 
     {
-        this.x = x ;
-        this.y = y ;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter pr = new PrintWriter(System.out);
+        StringBuilder sb = new StringBuilder();
+        Grid = new char[100][100];
+        int tc = Integer.parseInt(br.readLine());
+        br.readLine();
+        while(tc-->0)
+        {
+            N = 0 ;
+            String x = br.readLine();
+            M = x.length() ;
+            Grid[N++] = x.toCharArray();
+            String str ;
+            while( (str = br.readLine()).length() == M )
+               Grid[N++] = str.toCharArray();
+            visited = new boolean[N][M];
+            StringTokenizer st = new StringTokenizer(str);
+            int i = Integer.parseInt(st.nextToken())-1 ;
+            int j = Integer.parseInt(st.nextToken())-1 ;
+            sb.append(dfs(i, j)).append("\n");
+            while( br.ready() &&  ( str = br.readLine() ).length() > 0 )
+            {
+                visited = new boolean [N][M];
+                st = new StringTokenizer(str);
+                i = Integer.parseInt(st.nextToken())-1 ;
+                j = Integer.parseInt(st.nextToken())-1 ;
+                sb.append(dfs(i, j)).append("\n");
+            }
+            if(tc > 0)
+                sb.append("\n");
+        }
+        pr.print(sb.toString());
+        
+        pr.close();
+        br.close();
     }
+    
 }
-
