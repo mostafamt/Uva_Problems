@@ -1,114 +1,77 @@
-
-import java.io.* ;
 import java.util.* ;
+import java.io.* ;
 /**
- *
+ * Uva 11060 - Beverages
  * @author mostafa
  */
-public class Uva11060 {
+public class Uva11060 
+{
+    static int [] indegree ;
+    static int N ;
+    static ArrayList<Integer> [] adjList ;
+    static int [] ans ;
     
-    static int [][] adjMat ;
-    static int nVerts ;
-    static String [] vertexList ;
-    static Map<String , Integer> map = new HashMap<>() ;
-    static int [] sortedArray ;
-    
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter out = new PrintWriter(System.out);
-        String s ;
-        int time = 1 ;
-        StringBuilder stringBuilder = new StringBuilder();
-        while( ( s = br.readLine()) != null && !s.isEmpty() )
+    public static void main(String[] args) throws IOException 
+    {
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new FileReader("in.txt"));
+        PrintWriter pr = new PrintWriter(System.out);
+        StringBuilder sb = new StringBuilder();
+        int c = 1 ;
+        while(br.ready())
         {
-            int n = Integer.parseInt(s);
-            Topo graph = new Topo(n);
-            Map<String , Integer> map = new HashMap<>();
-            Map<Integer , String> map2 = new HashMap<>();
-            int index = 0 ;
-            for (int i = 0; i < n ; i++) {
+            N = Integer.parseInt(br.readLine());
+            indegree = new int[N];
+            adjList = (ArrayList<Integer>[])new ArrayList[N];
+            for (int i = 0; i < N ; i++)
+                adjList[i] = new ArrayList<Integer>();
+            String [] toString = new String[N];
+            Map<String,Integer> toInteger = new HashMap<String,Integer>();
+            for (int i = 0; i < N ; i++)
+            {
                 String str = br.readLine();
-                map2.put(index, str);
-                map.put(str , index++);
+                toString[i] = str ;
+                toInteger.put(str, i);
             }
-            int len = Integer.parseInt(br.readLine());
-            for (int i = 0; i < len ; i++) {
+            int m = Integer.parseInt(br.readLine());
+            for (int i = 0; i < m ; i++) 
+            {
                 StringTokenizer st = new StringTokenizer(br.readLine());
-                graph.addEdge( map.get(st.nextToken()) , map.get(st.nextToken()) );
+                int u = toInteger.get(st.nextToken());
+                int v = toInteger.get(st.nextToken());
+                adjList[u].add(v);
+                indegree[v]++ ;
             }
-            List<Integer> list = graph.topoSort();
-            
-            stringBuilder.append("Case #");
-            stringBuilder.append(time++);
-            stringBuilder.append(": Dilbert should drink beverages in this order: ");
-            int size = list.size();
-            for (int i = 0 ; i < size ; i++) {
-                if( i == size-1 )
-                    stringBuilder.append(map2.get(list.get(i) )+".");
-                else
-                    stringBuilder.append(map2.get(list.get(i) )+" ");
-            }
-            stringBuilder.append("\n\n");
+            khan();
+            sb.append("Case #"+(c++)+": Dilbert should drink beverages in this order: ");
+            for (int i = 0; i < N-1 ; i++) 
+                sb.append(toString[ans[i]]).append(" ");
+            sb.append(toString[ans[N-1]]+".\n\n");
             br.readLine();
         }
-        System.out.print( stringBuilder.toString() );
-        
+        pr.print(sb.toString());
         br.close();
-        out.flush();
-        out.close();
+        pr.close();
+        
     }
     
-    
-    
-}
-
-
-class Topo
-{
-    List<Integer> [] adjList ;
-    int nVertex ;
-    
-    public Topo(int n)
+    static void khan()
     {
-        nVertex = n ;
-        adjList = new ArrayList[nVertex];
-        for (int i = 0; i < nVertex ; i++) {
-            adjList[i] = new ArrayList<>();
-        }
-    }
-    
-    public void addEdge(int u , int v)
-    {
-        adjList[u].add(v);
-    }
-    
-    public List topoSort()
-    {
-        int [] indegree = new int[nVertex];
-        for (int i = 0; i < adjList.length; i++) {
-            ArrayList<Integer> list = (ArrayList<Integer>)adjList[i];
-            for (int t : list) {
-                indegree[t]++ ;
-            }
-        }
-        Queue<Integer> q = new PriorityQueue<>();
-        for (int i = 0 ; i < indegree.length ; i++) {
-            if( indegree[i] == 0 )
+        PriorityQueue<Integer> q = new PriorityQueue<Integer>();
+        for (int i = 0; i < N ; i++)
+            if (indegree[i] == 0)
                 q.add(i);
-        }
-
-        List<Integer> list = new ArrayList<>();
-        while( !q.isEmpty() )
+        int cnt = 0;
+        ans = new int[N];
+        int i = 0 ;
+        while (!q.isEmpty())
         {
             int u = q.poll();
-            list.add(u);
-            ArrayList<Integer> neigh = (ArrayList<Integer>)adjList[u];
-            for (int i : neigh) {
-                if( --indegree[i] == 0 )
-                    q.add(i);
-            }
+            ans[i++] = u ;
+            for (int node : adjList[u])
+                if (--indegree[node] == 0)
+                    q.add(node);
+            cnt++;
         }
-        return list ;
     }
 }
-
