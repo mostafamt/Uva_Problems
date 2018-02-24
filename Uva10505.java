@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 /*
- * 10505 - Montesco vs Capuleto
+ * Uva 10505 - Montesco vs Capuleto
  * Description : The first thing you will do is connect each two enemes by an edge .
  *               what will that do ?
  *               It makes the graph to be bipartite .It means each that two neighbours must be assigned
