@@ -5,7 +5,7 @@ import java.io.*;
  * Uva 10505 - Montesco vs Capuleto
  * Description : The first thing you will do is connect each two enemes by an edge .
  *               what will that do ?
- *               It makes the graph to be bipartite .It means each that two neighbours must be assigned
+ *               It makes the graph to be bipartite .It means that eac two neighbours must be assigned
  *               different values (different colors) . by dfs assign the valus to each subgraph .
  *               calculate max color for each subgraph .
  * @ author Mostafa Kamel
