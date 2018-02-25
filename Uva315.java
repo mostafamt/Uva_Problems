@@ -41,10 +41,8 @@ public class Uva315
                 while (st.hasMoreTokens())
                 {
                     int y = Integer.parseInt(st.nextToken())-1;
-                    if(!adjList[x].contains(y))
-                        adjList[x].add(y);
-                    if(!adjList[y].contains(x))
-                        adjList[y].add(x);
+                    adjList[x].add(y);
+                    adjList[y].add(x);
                 }
                 st = new StringTokenizer(br.readLine());
                 x = Integer.parseInt(st.nextToken())-1;
