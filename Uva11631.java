@@ -13,7 +13,6 @@ public class Uva11631
         int m = Integer.parseInt(st.nextToken());
         while (n!=0&&m!=0)
         {
-            PriorityQueue<Edge> pq = new PriorityQueue<>();
             Edge [] edgeList = new Edge[m];
             UF uf = new UF(n+1);
             int minCost = 0 ;
