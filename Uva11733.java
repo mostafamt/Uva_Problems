@@ -7,8 +7,6 @@ import java.io.*;
  */
 public class Uva11733
 {
-    static int [] marked = new int[10010];
-
     public static void main(String[] args) throws IOException
     {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
