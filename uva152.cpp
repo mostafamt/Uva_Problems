@@ -3,6 +3,7 @@
 #include <vector>
 using namespace std ;
 #define pb push_back 
+#define sq(x) (x*x)
 struct Point
 {
 	int x , y , z ;
@@ -10,7 +11,7 @@ struct Point
 };
 int dist(Point p1 , Point p2)
 {
-	return (int)sqrt(((p1.x-p2.x)*(p1.x-p2.x))+((p1.y-p2.y)*(p1.y-p2.y))+((p1.z-p2.z)*(p1.z-p2.z)));
+	return (int)sqrt( sq((p1.x-p2.x)) + sq((p1.y-p2.y)) + sq((p1.z-p2.z))     );
 }
 int main()
 {
