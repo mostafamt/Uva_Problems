@@ -6,8 +6,7 @@ public class Uva573
 
     public static void main(String[] args) throws IOException
     {
-        BufferedReader br = new BufferedReader(new FileReader("in.txt"));
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter pr = new PrintWriter(System.out);
         StringBuilder sb = new StringBuilder();
         while(br.ready())
