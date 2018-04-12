@@ -1,3 +1,6 @@
+/*   
+ *  check wiki , I set tutorial for this problem .
+*/
 #include <cstdio>
 using namespace std ;
 int left[(int)1e5+5] , right[(int)1e5+5];
