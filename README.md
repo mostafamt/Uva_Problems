@@ -1,10 +1,8 @@
 # Uva_Problems
 This is my solution to some uva online judge problems .
 
-##Favourite Problems<br>
+# Favourite Problems<br>
 
-
-| First Header  | Second Header |
+| id  | category |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| uva12356  | Data Structure - Array  |
