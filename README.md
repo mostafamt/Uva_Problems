@@ -2,10 +2,10 @@
 This is my solution to some uva online judge problems .
 
 # How to use
-java compilation : javac file
-java run : ./file
-cpp compilation : g++ -std=c++11 -O2 -Wall file -o exeFile
-cpp execuation : ./file
+java compilation : javac file<br>
+java run : ./file<br>
+cpp compilation : g++ -std=c++11 -O2 -Wall file -o exeFile<br>
+cpp execuation : ./file<br>
 
 # Favourite Problems<br>
 
