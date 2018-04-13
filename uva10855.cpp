@@ -24,11 +24,11 @@ int is_match(vs S , vs s , int x0 , int y0)
 
 int match(vs S , vs s)
 {
-	int ret = 0 ;
+	int num = 0 ;
 	for(int y = 0 ; y <= N-n ; y++)
 		for(int x = 0 ; x <= N-n ; x++)
-			ret += is_match(S,s,x,y);
-	return ret ;
+			num += is_match(S,s,x,y);
+	return num ;
 }
 
 int main()
