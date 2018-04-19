@@ -11,7 +11,7 @@ int main()
 	{
 		int size = strlen(s);
 		if(next_permutation(s,s+size))	cout<<s<<"\n" ;
-		else							cout<<"No Successor"<<"\n";
+		else			 	cout<<"No Successor"<<"\n";
 	}
 	return 0 ;
 }
