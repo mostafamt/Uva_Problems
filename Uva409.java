@@ -7,8 +7,6 @@ public class Uva409 {
         StringBuilder sb = new StringBuilder();
         int c = 1 ;
         while(br.ready()){
-            if(c!=1)
-                sb.append("\n");
             StringTokenizer st = new StringTokenizer(br.readLine());
             int k = Integer.parseInt(st.nextToken());
             int e = Integer.parseInt(st.nextToken());
