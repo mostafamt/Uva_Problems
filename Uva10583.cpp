@@ -1,10 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <set>
 using namespace std ;
-#define MAXN 5005
-#define MAX (int)(25e6)
 typedef vector<int> vi ;
 
 class UnionFind {
@@ -49,7 +45,6 @@ public:
 int main()
 {
 	int n , m , x , y ,c = 1 ;
-	set<int> st ;
 	while(cin>>n>>m , n ){
 		UnionFind uf(n);
 		while(m--){
