@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-
+// bfs 
 public class Uva12460 {
     static HashSet<String> set = new HashSet<>();
 
