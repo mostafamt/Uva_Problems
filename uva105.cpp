@@ -9,6 +9,7 @@
 #define MAX 10000
 using namespace std ;
 // this type of problems is time consumer , about >= 4 hour
+// it's accepted from second sumbission but it's very tedious
 pair< pair<int,int> ,int> a[MAX] ;
 int l , h , r ,idx = 0 ;
 int main()
