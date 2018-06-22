@@ -8,8 +8,8 @@ using namespace std ;
 
 int main()
 {
-	cin.sync_with_stdio(false) ;
-	cin.tie(0) ;
+    cin.sync_with_stdio(false) ;
+    cin.tie(0) ;
     string s ;
     while( getline( cin , s ) ,  s != "0" ){
         int size = s.size();
@@ -20,7 +20,7 @@ int main()
         cout << sum << "\n" ;
         s.clear();
     }
-	return 0 ;
+    return 0 ;
 }
 
 
