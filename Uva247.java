@@ -5,7 +5,7 @@ public class Uva247 {
 
     public static void main(String[] args) throws IOException
     {
-        BufferedReader br = new BufferedReader(new FileReader("in.txt"));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter pw = new PrintWriter(System.out);
         StringBuilder sb = new StringBuilder();
         int c = 0 ;
