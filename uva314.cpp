@@ -12,7 +12,7 @@ using namespace std ;
 #define se second
 #define MAX 51
 
-// I have spent all the day in struggling with wrong answer for this problem .
+// I have spent all the day in struggling with wrong answer for this problem , however I get rank 20 .
 // logic errors and subtle tricks are so hard to identify 
 // good luck , i was here :) smile
 
