@@ -30,7 +30,7 @@ double get_dis(dd p1 , dd p2)
 {
     double y = p1.fi - p2.fi ;
     double x = p1.se - p2.se ;
-    return sqrt( y * y + x * x  );
+    return hypot(y,x);
 }
 
 int main()
