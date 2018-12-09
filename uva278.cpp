@@ -23,7 +23,7 @@ int main()
         ss >> r >> c ;
         switch( p ){
             case 'k' :
-                ans = r * c / 2 ;
+                ans = ( ( r * c ) + 1 ) / 2 ;
                 break ;
             case 'K' :
                 ans = ( (r+1)/2 ) * ( (c+1)/2 ) ;
