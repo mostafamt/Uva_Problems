@@ -1,5 +1,5 @@
 /* @author : mostafa
- * created : 2019-02-07 10:44
+ * created : 2019-02-08 04:31
  */
 #include <bits/stdc++.h>
 using namespace std ;
@@ -13,42 +13,46 @@ using namespace std ;
 #define pb push_back
 #define all(x) (x).begin(),(x).end()
 typedef long long ll ;
+const int N = 101 , M = 10001 ;
+int weights[101] , values[101] ;
+int n , m ; 
+int dp[N][M];
 
-const int W = 10010 ;
-const int N = 101 ;
-int dp[N][W];
-int weights[N] , values[N];
-int m , n ;
-
-int fun(int idx , int w)
+int fun(int i, int w)
 {
-    if( w > m && m <= 1800 ){
-        return -1000 ;
+    if( w > m ){
+        if( w - m > 200 ){
+            return -1000 ;
+        } else if( m <= 1800 ){
+            return -1000 ;
+        }
     }
-    if( w > m + 200 ){
-        return -1000 ;
-    }
-    if( idx == n ){
-        if( w > m && w <= 2000 ){
-            return -10000 ;
+    if( i == n ){
+        if( w > m ){
+            if( w - m > 200 ){
+                return -1000 ;
+            } else if( m <= 1800 || w <= 2000 ){
+                return -1000 ;
+            }
         }
         return 0 ;
     }
-    if( dp[idx][w] != -1 ){
-        return dp[idx][w] ;
+    if( dp[i][w] != -1 ){
+        return dp[i][w] ;
     }
-    int take = fun(idx+1 , weights[idx]+w);
-    int leave = fun( idx+1 , w );
-    return dp[idx][w] = max( values[idx] + take , leave );
+    int take = fun(i+1,w+weights[i]);
+    int leave = fun(i+1, w);
+    return dp[i][w] = max( leave , values[i]+take );
 }
+
 
 int main()
 {
     cin.sync_with_stdio(false);
     cin.tie(0);
-    while( cin >> m >> n ){
-        memset( dp , -1 , sizeof dp );
+    while ( cin >> m >> n ){
         forn(i,n) cin >> weights[i] >> values[i] ;
+        memset( dp , -1 , sizeof dp );
         int ans = fun(0,0);
         cout << ans << '\n' ;
     }
